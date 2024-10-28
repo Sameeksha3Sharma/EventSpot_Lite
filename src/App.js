@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import EventList from './components/EventList';
 import './App.css';
+import 'animate.css';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="navbar">
+        <h1>EventSpot Lite</h1>
+        <input
+          type="text"
+          placeholder="Search events"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </nav>
+      <EventList searchQuery={searchQuery} />
     </div>
   );
 }
